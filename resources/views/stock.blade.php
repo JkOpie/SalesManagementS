@@ -17,8 +17,7 @@
     
                 </div>
                 <div class="col-4">
-                    <button class="btn" style="background:#3421C0;color:#fff" data-toggle="modal" data-target="#sales"><i
-                            class="fas fa-plus" style="padding-right:10px"></i> Sales</button>
+                    <a class="btn" style="background:#3421C0;color:#fff" href="/sales"><i class="fas fa-plus" style="padding-right:10px"></i> Sales</a>
                 </div>
             </div>
         </div>
@@ -41,9 +40,16 @@
                     <td>{{$alls->quantity}}</td>
                     <td>{{$alls->time}}</td>
                     <td>{{$alls->categories}}</td>
-                    <td><button class="btn btn-primary" ><i class="fas fa-edit"></i></button> 
-                        <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button></td>
-                   
+                <td>
+                    <form id="stock_delete" method="post" action="/stock/{{$alls->product_id}}">
+                        @csrf
+                        @method('delete')
+                        <input type="hidden" value="{{$alls->quantity}}" name="quantity">
+                        <input type="hidden" value="{{$alls->id}}" name="stock_id">
+                        <button class="btn btn-danger stock_delete" type="submit">
+                        <i class="fas fa-trash-alt"></i></button>
+                    </form>
+                </td>
                 </tr>
                 @endforeach
     
@@ -106,6 +112,7 @@
             </div>
         </div>
     </div>
+
 
 
 

@@ -76,10 +76,9 @@ class ProductController extends Controller
             'product_name' => $request->product_name,
             'price' => $request->price,
             'sales_price' => $request->sales_price,
-            'price' => $request->profit,
+            'profit' => $request->profit,
             'quantity' => $request->quantity,
         ]);
-
         return redirect('/product');
     }
 

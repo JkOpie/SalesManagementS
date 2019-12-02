@@ -17,8 +17,10 @@ $(document).ready(function () {
 
     menu_li();
     product_delete();
-    add_stock();
     product_add();
+
+    add_stock();
+    stock_delete();
 
 });
 
@@ -196,6 +198,52 @@ function display_profit(){
 
     $('#input_profit').val(profit);
     
+}
+
+function stock_delete() {
+    var token = $("meta[name='csrf-token']").attr("content");
+    var myForm  = $("form#stock_delete");
+    var product_quantity = 
+    myForm.submit(function (e) {
+        e.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: 'delete',
+                    url: myForm.attr('action'),
+                    data: myForm.serialize(),
+                    success: function (data) {
+                        swal.fire({
+                            title: "Success!",
+                            text: "Event deleted!",
+                            icon: "success",
+                            confirmButtonColor: '#3085d6',
+                        }).then((result) => {
+                            if (result.value) {
+                                location.reload();
+                            } else {
+                                location.reload();
+                            }
+                        })
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        swal.fire({
+                            title: "Oops!",
+                            text: "An error occurred",
+                        });
+                    }
+                });
+            }
+        })
+    });
 }
 
 

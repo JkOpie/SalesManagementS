@@ -32,7 +32,7 @@ Route::post('/stock', 'StockController@store')->name('add_stock');
 Route::put('/stock', 'StockController@update')->name('update_stock');
 Route::delete('/stock/{id}', 'StockController@delete')->name('delete_stock');
 
-
+Route::get('/sales', 'SalesController@index');
 
 
 Route::get('/about', function () {

@@ -123,7 +123,13 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label text-right">Quantity: RM</label>
+                            <label class="col-sm-4 col-form-label text-right">Profit: RM</label>
+                            <div class="col-sm-8">
+                                <input type="number" class="form-control" name="profit" value="{{$pros->profit}}">
+                            </div>
+                        </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-right">Quantity:</label>
                         <div class="col-sm-8">
                             <input type="number" class="form-control" name="quantity" value="{{$pros->quantity}}">
                         </div>
