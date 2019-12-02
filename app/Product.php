@@ -11,6 +11,6 @@ class Product extends Model
     use Notifiable;
 
     protected $fillable = [
-        'id','product_name', 'price', 'sales_price','quantity',
+        'id','product_name', 'price', 'sales_price','quantity','profit',
     ];
 }

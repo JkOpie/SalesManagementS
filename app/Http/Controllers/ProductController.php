@@ -32,11 +32,13 @@ class ProductController extends Controller
     }
 
     public function store(Request $request){
+
       
         $Validated = request()->validate([
             'product_name' => 'required',
             'price' => 'required',
             'sales_price' => 'required',
+            'profit' => 'required',
             'quantity' => 'required',
         ]);
 
@@ -52,23 +54,29 @@ class ProductController extends Controller
                 'categories' => 'add_stock', 
             ]);
         }
-        return redirect('/product');
+
+       return response()->json([
+            'success' => 'Product added successfully!'
+        ]);
     }
 
     public function update(Request $request){
   
         $Validated = request()->validate([
+            'id' => 'required',
             'product_name' => 'required',
             'price' => 'required',
             'sales_price' => 'required',
+            'profit' => 'required',
             'quantity' => 'required',
-            'id' => 'required'
+            
         ]);
 
         Product::where('id','=', $request->id)->update([
             'product_name' => $request->product_name,
             'price' => $request->price,
             'sales_price' => $request->sales_price,
+            'price' => $request->profit,
             'quantity' => $request->quantity,
         ]);
 
@@ -81,7 +89,7 @@ class ProductController extends Controller
         $delete = Product::find($id)->delete($id);
 
         return response()->json([
-            'success' => 'Record deleted successfully!'
+            'success' => 'Product deleted successfully!'
         ]);
         
     }

@@ -18,7 +18,7 @@ $(document).ready(function () {
     menu_li();
     product_delete();
     add_stock();
-    add_input();
+    product_add();
 
 });
 
@@ -56,6 +56,40 @@ function myFunction() {
             }
         }
     }
+}
+
+function product_add(){
+    var token = $("meta[name='csrf-token']").attr("content");
+    var myForm  = $("form#add_product");
+
+    myForm.submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'post',
+            url: myForm.attr('action'),
+            data: myForm.serialize(),
+            success: function (data) {
+                swal.fire({
+                    title: "Success!",
+                    text: "Product Added!",
+                    icon: "success",
+                    confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                    if (result.value) {
+                        location.reload();
+                    } else {
+                        location.reload();
+                    }
+                })
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                swal.fire({
+                    title: "Oops!",
+                    text: "An error occurred",
+                });
+            }
+        });
+    });      
 }
 
 function product_delete() {
@@ -155,26 +189,13 @@ function add_stock(){
   })
 };
 
-function add_input(){
-    var max_fields_limit = 8; //set limit for maximum input fields
-    var x = 1;
-    $('.add_more').click(function (){
+function display_profit(){
+    var sales =  $('#input_sales').val();
+    var price = $('#input_price').val();
+    var profit = sales-price;
 
-        if(x<max_fields_limit){
-            x++;
-            var html = $(".copy").html();
-            $(".after-add-more").after(html);
-        }
-        
-    });
-
-    $("body").on("click",".remove",function(){ 
-        X--;
-        console.log(X);
-        
-        $(this).parents(".control-group").remove();
-    });
-
-
+    $('#input_profit').val(profit);
+    
 }
+
 

@@ -66,18 +66,16 @@
                 <div class="modal-body">
                 <form id="editform" method="post" action="{{route('add_stock')}}">
                         @csrf
+                        @foreach ($pro_name as $pn)
                         <div class="form-group row after-add-more control-group">
                             <label class="col-sm-2 col-form-label text-right">Product Name:</label>
                             <div class="col-sm-3">
-                                <select class="form-control" name="product_id[]">
-                                    @foreach ($pro_name as $pn)
-                                        <option value="{{$pn->id}}">{{$pn->product_name}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                            <label class="col-sm-1 col-form-label text-right"> Price:</label>
+                                <input type="text"  class="form-control" value="{{$pn->id}}" name="product_id[]"></option>
+                            </div> 
+
+                            <label class="col-sm-2 col-form-label text-right"> Price: RM</label>
                             <div class="col-sm-2">
-                            <input type="number" readonly class="form-control" value="{{$pn->sales_price}}" >
+                                <input type="number" readonly class="form-control" value="{{$pn->sales_price}}" >
                             </div>
                            
                             
@@ -85,10 +83,9 @@
                             <div class="col-sm-2">
                                 <input type="number" class="form-control" required name="quantity[]" value="0">
                             </div>
-                            <div class="col-sm-1">
-                                    <button type="button" class="btn btn-danger add_more"><i class="fas fa-plus"></i></button>
-                            </div> 
+                            
                         </div>
+                        @endforeach
                         <hr>
                         <div class="row">
                             <label class="col-sm-2 col-form-label text-right">Total Sales:</label>
@@ -102,33 +99,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="copy d-none">
-                    <div class="form-group row control-group">
-                        <label class="col-sm-2 col-form-label text-right">Product Name:</label>
-                        <div class="col-sm-3">
-                            <select class="form-control" name="product_id[]">
-                                @foreach ($pro_name as $pn)
-                                <option value="{{$pn->id}}">{{$pn->product_name}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        <label class="col-sm-1 col-form-label text-right"> Price:</label>
-                            <div class="col-sm-2">
-                            <input type="number" readonly class="form-control" value="{{$pn->sales_price}}" >
-                            </div>
-                       
-                        
-                        <label class="col-sm-1 col-form-label text-right">Quantity: </label>
-                        <div class="col-sm-2">
-                            <input type="number" class="form-control" required name="quantity[]" value="0" >
-                        </div>
-                        <div class="col-sm-1">
-                                <button type="button" class="btn btn-danger remove"><i class="fas fa-trash-alt"></i></button>
-                        </div>
-                           
-                    </div>
-                  </div>
+               
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
