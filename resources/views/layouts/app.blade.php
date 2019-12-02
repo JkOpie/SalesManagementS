@@ -104,19 +104,22 @@
                             <li>
                                 <a href="/product" class=" icon acon">
                                     <span class="icon"><i class="fas fa-chart-pie"></i></span>
+                                    <span class="list">Manage </span> <br>
                                     <span class="list">Product</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="/stock" class=" icon acon">
                                     <span class="icon"><i class="fas fa-address-book"></i></span>
-                                    <span class="list">Stock & Sales</span>
+                                    <span class="list">Manage </span> <br>
+                                    <span class="list">Inventory </span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/user" class="icon acon">
-                                    <span class="icon"><i class="fas fa-users"></i></span>
-                                    <span class="list">User</span>
+                                <a href="/sales" class=" icon acon">
+                                    <span class="icon"><i class="fas fa-address-book"></i></span>
+                                    <span class="list">Manage </span> <br>
+                                    <span class="list">Sales </span>
                                 </a>
                             </li>
                         </ul>

@@ -30,7 +30,10 @@ Route::post('/product/add_stock', 'ProductController@add_stock')->name('add_stoc
 Route::get('/stock', 'StockController@index');
 Route::post('/stock', 'StockController@store')->name('add_stock');
 Route::put('/stock', 'StockController@update')->name('update_stock');
-Route::delete('/stock/{id}', 'StockController@delet')->name('delete_stock');
+Route::delete('/stock/{id}', 'StockController@delete')->name('delete_stock');
+
+
+
 
 Route::get('/about', function () {
     return view('about');

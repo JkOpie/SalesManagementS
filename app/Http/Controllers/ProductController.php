@@ -104,7 +104,7 @@ class ProductController extends Controller
             'product_id' => $add_stock->id,
             'quantity' => $request->quantity,
             'time' => Carbon::now()->toDateString(),
-            'categories' => 'stock',
+            'categories' => 'add_stock',
         ]);
 
         return response()->json([
