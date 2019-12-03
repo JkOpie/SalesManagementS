@@ -192,11 +192,11 @@ function add_stock(){
 };
 
 function display_profit(){
-    var sales =  $('#input_sales').val();
-    var price = $('#input_price').val();
+    var sales =  $('.input_sales').val();
+    var price = $('.input_price').val();
     var profit = sales-price;
 
-    $('#input_profit').val(profit);
+    $('.input_profit').val(profit);
     
 }
 
@@ -245,5 +245,6 @@ function stock_delete() {
         })
     });
 }
+
 
 

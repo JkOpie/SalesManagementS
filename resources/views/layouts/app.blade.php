@@ -64,8 +64,19 @@
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                     </li>
+
+                                   
                                     @endif
                                     @else
+                                    <li class="nav-item">
+                                        <a class="btn btn-link d-inline" style="font-size:25px;" href="/cart">
+                                            <i class="fas fa-shopping-cart" style="color:#3421C0"></i>
+                                        </a>
+                                    <span class="badge badge-notify" style="font-size:10px;">{{$cart}}</span>
+                                        </div>
+                                        
+                                    </li>
+
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -93,7 +104,7 @@
             <div class="main_body">
                 <div class="sidebar_menu">
                     <div class="inner__sidebar_menu" id="myDIV">
-                        <ul>
+                        <ul class="ul">
                             <li>
                                 <a href="/home" class=" icon acon">
                                     <span class="icon ">
@@ -104,22 +115,22 @@
                             <li>
                                 <a href="/product" class=" icon acon">
                                     <span class="icon"><i class="fas fa-chart-pie"></i></span>
-                                    <span class="list">Manage </span> <br>
-                                    <span class="list">Product</span>
+                                    <span class="list">Manage Product</span> 
+                                   
                                 </a>
                             </li>
                             <li>
                                 <a href="/stock" class=" icon acon">
                                     <span class="icon"><i class="fas fa-address-book"></i></span>
-                                    <span class="list">Manage </span> <br>
-                                    <span class="list">Inventory </span>
+                                    <span class="list">Manage Inventory</span> 
+                                   
                                 </a>
                             </li>
                             <li>
-                                <a href="/sales" class=" icon acon">
+                                <a href="/cart" class=" icon acon">
                                     <span class="icon"><i class="fas fa-address-book"></i></span>
-                                    <span class="list">Manage </span> <br>
-                                    <span class="list">Sales </span>
+                                    <span class="list">Manage Cart</span> 
+                                    
                                 </a>
                             </li>
                         </ul>

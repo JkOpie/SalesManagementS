@@ -4,9 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Sales extends Model
+class Cart extends Model
 {
     protected $fillable = [
-        'id','product_id', 'quantity', 'time','categories',
+        'id','product_id', 'price', 'quantity', 'total_price',
     ];
 }
+

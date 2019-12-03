@@ -17,7 +17,7 @@
     
                 </div>
                 <div class="col-4">
-                    <a class="btn" style="background:#3421C0;color:#fff" href="/sales"><i class="fas fa-plus" style="padding-right:10px"></i> Sales</a>
+                    <a class="btn" style="background:#3421C0;color:#fff" href="/cart"><i class="fas fa-plus" style="padding-right:10px"></i> Sales</a>
                 </div>
             </div>
         </div>

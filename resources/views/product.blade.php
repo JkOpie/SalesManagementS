@@ -16,7 +16,7 @@
     </div>
     <div class="col-2 position-static">
         <div class="top_static">
-            <h1 class="text-center text-white">Total Inventory Revenue</h1>
+            <h1 class="text-center text-white">Total Inventory <br> Revenue</h1>
             <hr class="hr_white">
             <h1 class="text-center text-white"></h1>
         </div>
@@ -73,10 +73,12 @@
                 <td>RM {{$pros->profit}}</td>
                 <td>{{$pros->quantity}}</td>
                 <td>
-                    <button class="btn btn-primary" style="margin-right:10px" data-toggle="modal"
+                    <button class="btn btn-primary" data-toggle="modal"
                         data-target="#edit{{$pros->id}}"><i class="fas fa-edit"></i></button>
-                    <button class="btn btn-danger deletebtn" value="{{$pros->id}}" style="margin-right:10px"><i class="fas fa-trash-alt"></i></button>
-                    <button class="btn btn-danger add_stock" value="{{$pros->id}}"><i class="fas fa-plus"></i> Stock</button>
+                    <button class="btn btn-danger deletebtn" value="{{$pros->id}}"><i class="fas fa-trash-alt"></i></button>
+                    <button class="btn btn-dark add_stock" value="{{$pros->id}}"><i class="fas fa-plus"></i> Stock</button>
+                    <button class="btn btn-success"  data-toggle="modal"
+                        data-target="#cart{{$pros->id}}"><i class="fas fa-shopping-cart" style="color: #fff"></i></button>
                 </td>
             </tr>
             @endforeach
@@ -110,22 +112,22 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label text-right">Price: RM</label>
+                        <label class="col-sm-4 col-form-label text-right">Price:</label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" name="price" value="{{$pros->price}}">
+                            <input type="number" class="form-control input_price" name="price" value="{{$pros->price}}" onkeyup="display_profit()">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label text-right">Sales Price: RM</label>
+                        <label class="col-sm-4 col-form-label text-right">Sales Price:</label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control" name="sales_price" value="{{$pros->sales_price}}">
-                            <input type="hidden" class="form-control" name="id" value="{{$pros->id}}">
+                            <input type="number"   class="form-control input_sales" name="sales_price" value="{{$pros->sales_price}}" onkeyup="display_profit()">
+                            <input type="hidden"   class="form-control" name="id" value="{{$pros->id}}">
                         </div>
                     </div>
                     <div class="form-group row">
-                            <label class="col-sm-4 col-form-label text-right">Profit: RM</label>
+                            <label class="col-sm-4 col-form-label text-right">Profit:</label>
                             <div class="col-sm-8">
-                                <input type="number" class="form-control" name="profit" value="{{$pros->profit}}">
+                                <input type="number" readonly class="form-control input_profit" name="profit" value="{{$pros->profit}}">
                             </div>
                         </div>
                     <div class="form-group row">
@@ -137,6 +139,68 @@
                     <div class="text-right">
                         <input type="submit" class="btn btn-primary " value="Save Change">
                     </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="cart{{$pros->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Add to Cart</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="addcartform" method="post" action="{{ route('add_cart') }}">
+                    @csrf
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-right">Product Name:</label>
+                        <div class="col-sm-8">
+                            <input type="text" readonly class="form-control" name="product_name" value="{{$pros->product_name}}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-right">Sales Price:</label>
+                        <div class="col-sm-8">
+                            <input type="number" readonly class="form-control input_price" name="price" value="{{$pros->sales_price}}" onkeyup="display_profit()">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-right">Max Quantity:</label>
+                        <div class="col-sm-8">
+                            <input type="number" readonly  class="form-control" name="max_quantity" value="{{$pros->quantity}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-right">Quantity:</label>
+                        <div class="col-sm-8">
+                            <input type="number"  class="form-control" name="quantity" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label text-right">Total Price:</label>
+                        <div class="col-sm-8">
+                            <input type="number"  class="form-control" name="total_price" >
+                        </div>
+                    </div>
+
+                    <input type="hidden" class="form-control" name="product_id" value="{{$pros->id}}">
+
+                    <div class="text-right">
+                        <input type="submit" class="btn btn-primary " value="Submit">
+                    </div>
+
+                   
                 </form>
             </div>
             <div class="modal-footer">
@@ -169,19 +233,19 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Price: </label>
                         <div class="col-sm-8">
-                            <input type="number" id="input_price" class="form-control" name="price" value="0" onkeyup="display_profit()">
+                            <input type="number" class="form-control input_price" name="price" value="0" onkeyup="display_profit()">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Sales Price: </label>
                         <div class="col-sm-8">
-                            <input type="number" id="input_sales" class="form-control" name="sales_price" value="0" onkeyup="display_profit()">
+                            <input type="number"  class="form-control input_sales" name="sales_price" value="0" onkeyup="display_profit()">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Profit: </label>
                         <div class="col-sm-8">
-                            <input type="number" readonly id="input_profit" class="form-control" name="profit" value="0" >
+                            <input type="number" readonly  class="form-control input_profit" name="profit" value="0" >
                         </div>
                     </div>
                     <div class="form-group row">

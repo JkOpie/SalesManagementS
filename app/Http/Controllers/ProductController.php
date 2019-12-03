@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Product;
 use App\Stock;
+use App\Sales;
 
 class ProductController extends Controller
 {

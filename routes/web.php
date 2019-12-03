@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+View::composer('layouts.app', function ($view) {
+    $view->with('cart', \App\Cart::all()->count());
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -32,7 +36,10 @@ Route::post('/stock', 'StockController@store')->name('add_stock');
 Route::put('/stock', 'StockController@update')->name('update_stock');
 Route::delete('/stock/{id}', 'StockController@delete')->name('delete_stock');
 
-Route::get('/sales', 'SalesController@index');
+Route::get('/cart', 'CartController@index');
+Route::post('/cart', 'CartController@store')->name('add_cart');
+Route::delete('/cart/{id}', 'CartController@delete')->name('delete_cart');
+
 
 
 Route::get('/about', function () {
