@@ -16,13 +16,14 @@ $(document).ready(function () {
     // }
 
     menu_li();
+    display_total_price();
     product_delete();
     product_add();
-
     add_stock();
     stock_delete();
 
 });
+var i=0;
 
 
 function menu_li() {
@@ -59,6 +60,7 @@ function myFunction() {
         }
     }
 }
+
 
 function product_add(){
     var token = $("meta[name='csrf-token']").attr("content");
@@ -143,6 +145,8 @@ function product_delete() {
 }
 
 
+
+
 function add_stock(){
   var token = $("meta[name='csrf-token']").attr("content");
   $(".add_stock").click(function () {
@@ -199,6 +203,27 @@ function display_profit(){
     $('.input_profit').val(profit);
     
 }
+
+
+
+
+function display_total_price(){
+    var quantity = $('.input_quantity').val();
+    var sales = $('.input_sales').val();
+    var max_quantity = $('.input_max_quantity').val();
+    
+    var total_price = sales*quantity;
+
+    if (parseInt(max_quantity) <=  parseInt(quantity)){
+          $('.for_error').show()
+    }else{
+        $('.for_error').hide()
+    }
+
+    $('.input_total_price').val(total_price);
+
+}
+
 
 function stock_delete() {
     var token = $("meta[name='csrf-token']").attr("content");

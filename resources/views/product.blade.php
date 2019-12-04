@@ -177,20 +177,26 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Max Quantity:</label>
                         <div class="col-sm-8">
-                            <input type="number" readonly  class="form-control" name="max_quantity" value="{{$pros->quantity}}">
+                            <input type="number" readonly  class="form-control input_max_quantity" name="max_quantity" value="{{$pros->quantity}}">
                         </div>
                     </div>
+                    <div class="col-sm-12 text-right for_error">
+                            <small style="color:red"> Product max quantity: {{$pros->quantity}} </small>
+                        </div>
 
-                    <div class="form-group row">
+                    <div class="form-group row append_error">
                         <label class="col-sm-4 col-form-label text-right">Quantity:</label>
                         <div class="col-sm-8">
-                            <input type="number"  class="form-control" name="quantity" >
+                            <input type="number"  class="form-control input_quantity" name="quantity" onkeyup ="display_total_price()">
                         </div>
                     </div>
+                    
+                  
+                   
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Total Price:</label>
                         <div class="col-sm-8">
-                            <input type="number"  class="form-control" name="total_price" >
+                            <input type="number" readonly class="form-control input_total_price" name="total_price" >
                         </div>
                     </div>
 

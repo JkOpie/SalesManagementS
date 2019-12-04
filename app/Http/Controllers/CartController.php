@@ -46,8 +46,11 @@ class CartController extends Controller
 
     }
 
-    public function delete($id){
-
+    public function delete($id,Request $request){
+        $pro = Product::where('id', '=', $request->product_id)->first();
+        $pro->quantity += $request->quantity;
+        $pro->save();
+        
         $delete = Cart::find($id)->delete();
 
         if($delete){

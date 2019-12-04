@@ -29,9 +29,12 @@
                             <td><form  method="post" action="/cart/{{$alls->id}}">
                                 @csrf
                                 @method('delete')
-                                    <button type="submit" class="btn btn-danger">Delete</a>
+                                    <input type="hidden" name="product_id" value="{{$alls->product_id}}">
+                                    <input type="hidden" name="quantity" value="{{$alls->quantity}}">
+                                    <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
                                 </form>
                             </td>
+
                             </tr>
                             @endforeach
                         </tbody>
