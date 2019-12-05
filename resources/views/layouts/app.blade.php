@@ -115,21 +115,21 @@
                             <li>
                                 <a href="/product" class=" icon acon">
                                     <span class="icon"><i class="fas fa-chart-pie"></i></span>
-                                    <span class="list">Manage Product</span> 
+                                    <span class="list">Product</span> 
                                    
                                 </a>
                             </li>
                             <li>
                                 <a href="/stock" class=" icon acon">
                                     <span class="icon"><i class="fas fa-address-book"></i></span>
-                                    <span class="list">Manage Inventory</span> 
+                                    <span class="list">Inventory</span> 
                                    
                                 </a>
                             </li>
                             <li>
                                 <a href="/cart" class=" icon acon">
                                     <span class="icon"><i class="fas fa-address-book"></i></span>
-                                    <span class="list">Manage Cart</span> 
+                                    <span class="list">Cart</span> 
                                     
                                 </a>
                             </li>

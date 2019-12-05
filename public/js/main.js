@@ -21,9 +21,23 @@ $(document).ready(function () {
     product_add();
     add_stock();
     stock_delete();
+    set_date();
 
 });
 var i=0;
+
+function set_date(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    
+    today = yyyy + '-' + mm + '-' + dd;
+
+    var date = $('#set_date').val(today);
+    console.log(date.val());
+    
+}
 
 
 function menu_li() {
@@ -145,8 +159,6 @@ function product_delete() {
 }
 
 
-
-
 function add_stock(){
   var token = $("meta[name='csrf-token']").attr("content");
   $(".add_stock").click(function () {
@@ -204,9 +216,6 @@ function display_profit(){
     
 }
 
-
-
-
 function display_total_price(){
     var quantity = $('.input_quantity').val();
     var sales = $('.input_sales').val();
@@ -223,7 +232,6 @@ function display_total_price(){
     $('.input_total_price').val(total_price);
 
 }
-
 
 function stock_delete() {
     var token = $("meta[name='csrf-token']").attr("content");

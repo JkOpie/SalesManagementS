@@ -16,8 +16,23 @@ class CartController extends Controller
 
     public function index(){
         $all = Cart::all();
+        $total_product = Cart::all()->count();
+        $total_price = 0;
+        $total_quantity = 0;
+
+
+        foreach($all as $alls){
+            $total_price = $total_price + $alls->total_price;
+            $total_quantity = $total_quantity + $alls->quantity;
+        }
+        
         $i = 0;
-        return view('cart')->with('all', $all)->with('i', $i);
+        return view('cart')
+        ->with('all', $all)
+        ->with('i', $i)
+        ->with('total_price',$total_price)
+        ->with('total_quantity',$total_quantity)
+        ->with('total_product', $total_product);
     }
 
     public function store(Request $request){
