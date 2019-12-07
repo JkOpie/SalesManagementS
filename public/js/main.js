@@ -21,23 +21,21 @@ $(document).ready(function () {
     product_add();
     add_stock();
     stock_delete();
-    set_date();
+
+    add_invoice()
 
 });
 var i=0;
 
-function set_date(){
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    var yyyy = today.getFullYear();
-    
-    today = yyyy + '-' + mm + '-' + dd;
+function display_balance(){
+    var total_price = $('#grand_total_price').val();
+    var payment = $('#payment').val();
 
-    var date = $('#set_date').val(today);
-    console.log(date.val());
-    
+    var total =  parseInt(payment) - parseInt(total_price)
+    $('#balance').val(total);
 }
+
+
 
 
 function menu_li() {
@@ -74,6 +72,48 @@ function myFunction() {
         }
     }
 }
+
+function add_invoice(){
+    var token = $("meta[name='csrf-token']").attr("content");
+    var myForm  = $("form#checkout");
+
+    myForm.submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'post',
+            url: myForm.attr('action'),
+            data: myForm.serialize(),
+            success: function (data) {
+                swal.fire({
+                    title: "Success!",
+                    text: "Invoice Created!",
+                    icon: "success",
+                    confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                    if (result.value) {
+                        location.reload();
+                    } else {
+                        location.reload();
+                    }
+                })
+            },
+            error: function (data) {
+                swal.fire({
+                    icon: "error",
+                    title: "Oops!",
+                    text: "Invalid Payment",
+                }).then((result) => {
+                    if (result.value) {
+                        location.reload();
+                    } else {
+                        location.reload();
+                    }
+                })
+            }
+        });
+    });      
+}
+
 
 
 function product_add(){

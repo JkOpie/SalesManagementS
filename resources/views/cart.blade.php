@@ -8,49 +8,13 @@
                         if you want add product pls click <a href="/product" class="href">here</a>
                 </div>
             <div class="data_wrapper">
-                   
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label >Receipt No.</label>
-                            <input type="text" readonly class="form-control" name="receipt">
-                        </div>
-                        <div class="form-group">
-                                <label>Customer Name:</label>
-                                <input type="text" class="form-control" name="name">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Customer Address</label>
-                                <textarea name="address" id=""  rows="5" class="form-control "></textarea>
-                            </div>
-                    </div>
-                    <div class="col-md-4">
-                            <div class="form-group">
-                                <label >Receipt Date:</label>
-                                <input type="date" readonly id="set_date" class="form-control date" name="date">
-                            </div>
-                            <div class="form-group">
-                                    <label for="inputEmail4">Total Product:</label>
-                                    <input type="number" readonly class="form-control" name="total_product" value="{{$total_product}}">
-                            </div>
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <button class="btn btn-primary" style="background:rgb(52, 33, 192);color:#fff;border-color:rgb(52, 33, 192)">Clear All</button>
-                        <button class="btn btn-primary" style="background:rgb(52, 33, 192);color:#fff;border-color:rgb(52, 33, 192)">Generate Receipt</button>
+                        <button class="btn btn-primary" style="background:rgb(52, 33, 192);color:#fff;border-color:rgb(52, 33, 192);margin-bottom:2em;" 
+                        data-toggle="modal" data-target="#checkout" >Checkout</button>
                     </div>
-
                 </div>
-                  
-                            
-                            
-                          
-                          
-                <hr>
-                
                 <table id="" class="table table-hover  text-center bg-white" style="width:100%">
                         <thead>
                             <tr>
@@ -83,6 +47,10 @@
 
                             </tr>
                             @endforeach
+
+                            <tr>
+
+                            </tr>
                         </tbody>
                 </table>
 
@@ -91,15 +59,16 @@
                     <div class="col-sm-8"></div>
                         <div class="col-sm-4">
                                 <div class="form-group row">
-                                        <label class="col-sm-7 col-form-label text-right">Grand Total Quantity:</label>
+                                        <label class="col-sm-7 col-form-label text-right">Total Quantity:</label>
                                         <div class="col-sm-5">
-                                            <input type="text" readonly class="form-control text-right" name="" value="{{$total_quantity}}">
+                                            <input type="text" readonly class="form-control text-right" name="total_quantity" value="{{$total_quantity}}">
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group row">
                                             <label class="col-sm-7 col-form-label text-right">Grand Total Price:</label>
                                             <div class="col-sm-5">
-                                            <input type="text" readonly class="form-control text-right" name="" value="{{$total_price}}">
+                                            <input type="text" readonly class="form-control text-right" name="total_price" value="{{$total_price}}">
                                     </div>
                                 </div>
                         </div>
@@ -109,6 +78,95 @@
         </div>
        
         
+    </div>
+</div>
+
+<div class="modal fade" id="checkout" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" >Checkout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            <form id="checkout" method="post" action="{{route('add_invoice')}}">
+                    @csrf
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Receipt No : </label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="receiptno" >
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label ">Customer Name :</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="custname" >
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label ">Cust Address:</label>
+                        <div class="col-sm-8">
+                            <input type="text"  class="form-control" name="address" >
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Total Product :</label>
+                        <div class="col-sm-8">
+                            <input type="number" readonly class="form-control" name="total_product" value="{{$total_product}}">
+                        </div>
+                    </div>
+
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Total Quantity :</label>
+                        <div class="col-sm-8">
+                            <input type="number" readonly class="form-control" name="total_quantity" value="{{$total_quantity}}" >
+                        </div>
+                    </div>
+                    
+                  
+                   
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Grand Total Price :</label>
+                        <div class="col-sm-8">
+                            <input type="number"  id="grand_total_price" readonly class="form-control" name="total_price" value="{{$total_price}}" >
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Payment :</label>
+                        <div class="col-sm-8">
+                            <input type="number"  id="payment" class="form-control" name="payment" onkeyup="display_balance()">
+                        </div>
+                        <label class="col-sm-4 col-form-label"></label>
+                        <small id="passwordHelpBlock" class="col-sm-8 form-text text-muted">
+                            Your payment must be higher than total price.
+                          </small>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">Balance :</label>
+                        <div class="col-sm-8">
+                            <input type="number" readonly id="balance" class="form-control" name="balance">
+                        </div>
+                    </div>
+
+
+                    <div class="text-right">
+                        <input type="submit" class="btn btn-primary " value="Submit">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

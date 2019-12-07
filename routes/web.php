@@ -40,6 +40,8 @@ Route::get('/cart', 'CartController@index');
 Route::post('/cart', 'CartController@store')->name('add_cart');
 Route::delete('/cart/{id}', 'CartController@delete')->name('delete_cart');
 
+Route::post('/invoice', 'InvoiceController@store')->name('add_invoice');
+
 
 
 Route::get('/about', function () {
@@ -47,8 +49,3 @@ Route::get('/about', function () {
 })->middleware('auth');;
 
 Route::get('/user', 'UserController@index');
-
-
-
-
-
