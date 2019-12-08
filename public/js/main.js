@@ -16,26 +16,104 @@ $(document).ready(function () {
     // }
 
     menu_li();
-    display_total_price();
+
     product_delete();
     product_add();
+
     add_stock();
     stock_delete();
 
-    add_invoice()
+    edit_invoice();
+    add_invoice();
+    delete_invoice();
+    
 
 });
+
+
 var i=0;
 
-function display_balance(){
-    var total_price = $('#grand_total_price').val();
-    var payment = $('#payment').val();
-
-    var total =  parseInt(payment) - parseInt(total_price)
-    $('#balance').val(total);
+function delete_invoice() {
+    var token = $("meta[name='csrf-token']").attr("content");
+    $(".invoicedelete").click(function () {
+        var id = this.value
+        console.log(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: 'delete',
+                    url: "invoice/" + id,
+                    data: {
+                        "_token": token,
+                        "id": id,
+                    },
+                    success: function (data) {
+                        swal.fire({
+                            title: "Success!",
+                            text: "Event deleted!",
+                            icon: "success",
+                            confirmButtonColor: '#3085d6',
+                        }).then((result) => {
+                            if (result.value) {
+                                location.reload();
+                            } else {
+                                location.reload();
+                            }
+                        })
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        swal.fire({
+                            title: "Oops!",
+                            text: "An error occurred",
+                        });
+                    }
+                });
+            }
+        })
+    });
 }
 
+function edit_invoice(){
+    var myForm  = $("form#edit_invoice");
 
+    myForm.submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'post',
+            url: myForm.attr('action'),
+            data: myForm.serialize(),
+            success: function (data) {
+                swal.fire({
+                    title: "Success!",
+                    text: "Invoice Edited!",
+                    icon: "success",
+                    confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                    if (result.value) {
+                        window.location.href = "/invoice";
+                    } else {
+                        window.location.href = "/invoice";
+                    }
+                })
+            },
+            error: function (data) {
+                swal.fire({
+                    icon: "error",
+                    title: "Oops!",
+                    text: "Invalid Payment",
+                })
+            }
+        });
+    });      
+}
 
 
 function menu_li() {
@@ -246,32 +324,6 @@ function add_stock(){
         })(); 
   })
 };
-
-function display_profit(){
-    var sales =  $('.input_sales').val();
-    var price = $('.input_price').val();
-    var profit = sales-price;
-
-    $('.input_profit').val(profit);
-    
-}
-
-function display_total_price(){
-    var quantity = $('.input_quantity').val();
-    var sales = $('.input_sales').val();
-    var max_quantity = $('.input_max_quantity').val();
-    
-    var total_price = sales*quantity;
-
-    if (parseInt(max_quantity) <=  parseInt(quantity)){
-          $('.for_error').show()
-    }else{
-        $('.for_error').hide()
-    }
-
-    $('.input_total_price').val(total_price);
-
-}
 
 function stock_delete() {
     var token = $("meta[name='csrf-token']").attr("content");

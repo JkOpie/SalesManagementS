@@ -40,8 +40,14 @@ Route::get('/cart', 'CartController@index');
 Route::post('/cart', 'CartController@store')->name('add_cart');
 Route::delete('/cart/{id}', 'CartController@delete')->name('delete_cart');
 
+Route::get('/invoice', 'InvoiceController@index');
 Route::post('/invoice', 'InvoiceController@store')->name('add_invoice');
+Route::get('/invoice/edit/{id}','InvoiceController@edit')->name('edit_invoice');
+Route::put('/invoice/{id}', 'InvoiceController@update')->name('update_invoice');
+Route::delete('/invoice/{id}', 'InvoiceController@delete')->name('delete_invoice');
 
+Route::get('/sales', 'SalesController@index');
+Route::get('/sales/{id}', 'SalesController@show');
 
 
 Route::get('/about', function () {

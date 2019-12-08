@@ -49,6 +49,7 @@
                         <button class="btn btn-danger stock_delete" type="submit">
                         <i class="fas fa-trash-alt"></i></button>
                     </form>
+                    
                 </td>
                 </tr>
                 @endforeach

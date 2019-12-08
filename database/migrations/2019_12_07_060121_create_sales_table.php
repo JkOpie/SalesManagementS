@@ -15,7 +15,7 @@ class CreateSalesTable extends Migration
             $table->string('Price');
             $table->string('Quantity');
             $table->bigInteger('Invoice_id')->unsigned()->index()->nullable();
-            $table->foreign('Invoice_id')->references('id')->on('invoices');
+            $table->foreign('Invoice_id')->references('id')->on('invoices')->onDelete('cascade');
             $table->timestamps();
          
         });

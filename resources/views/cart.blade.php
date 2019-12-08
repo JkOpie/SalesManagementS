@@ -95,12 +95,6 @@
             <form id="checkout" method="post" action="{{route('add_invoice')}}">
                     @csrf
                     <div class="form-group row">
-                        <label class="col-sm-4 col-form-label">Receipt No : </label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" name="receiptno" >
-                        </div>
-                    </div>
-                    <div class="form-group row">
                         <label class="col-sm-4 col-form-label ">Customer Name :</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" name="custname" >
@@ -141,7 +135,7 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label">Payment :</label>
                         <div class="col-sm-8">
-                            <input type="number"  id="payment" class="form-control" name="payment" onkeyup="display_balance()">
+                            <input type="number"  id="payment" class="form-control" name="payment">
                         </div>
                         <label class="col-sm-4 col-form-label"></label>
                         <small id="passwordHelpBlock" class="col-sm-8 form-text text-muted">

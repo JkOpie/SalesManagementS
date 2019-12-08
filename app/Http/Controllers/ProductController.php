@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Product;
 use App\Stock;
 use App\Sales;
+use App\Cart;
 
 class ProductController extends Controller
 {
@@ -87,6 +88,7 @@ class ProductController extends Controller
          
         $delete_stock = Stock::where("product_id", '=', $id)->delete();
         $delete = Product::find($id)->delete($id);
+        $delete_cart = Cart::where("product_id", '=', $id)->delete();
 
         return response()->json([
             'success' => 'Product deleted successfully!'

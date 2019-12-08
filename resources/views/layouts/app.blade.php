@@ -25,13 +25,14 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     
     <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/keyup.js') }}"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 
     <!-- Boostrap 4 Styles -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" >
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     
    
@@ -130,6 +131,14 @@
                                 <a href="/cart" class=" icon acon">
                                     <span class="icon"><i class="fas fa-address-book"></i></span>
                                     <span class="list">Cart</span> 
+                                    
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="/invoice" class=" icon acon">
+                                    <span class="icon"><i class="fas fa-address-book"></i></span>
+                                    <span class="list">Invoice</span> 
                                     
                                 </a>
                             </li>

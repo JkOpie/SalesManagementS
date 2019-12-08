@@ -170,7 +170,7 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Sales Price:</label>
                         <div class="col-sm-8">
-                            <input type="number" readonly class="form-control input_price" name="price" value="{{$pros->sales_price}}" onkeyup="display_profit()">
+                            <input type="number" readonly class="form-control input_price" name="price" value="{{$pros->sales_price}}">
                         </div>
                     </div>
                     
@@ -187,7 +187,7 @@
                     <div class="form-group row append_error">
                         <label class="col-sm-4 col-form-label text-right">Quantity:</label>
                         <div class="col-sm-8">
-                            <input type="number"  class="form-control input_quantity" name="quantity" onkeyup ="display_total_price()">
+                            <input type="number"  class="form-control input_quantity" name="quantity" >
                         </div>
                     </div>
                     
@@ -239,25 +239,25 @@
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Price: </label>
                         <div class="col-sm-8">
-                            <input type="number" class="form-control input_price" name="price" value="0" onkeyup="display_profit()">
+                            <input type="number" class="form-control" id="ap_price" name="price" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Sales Price: </label>
                         <div class="col-sm-8">
-                            <input type="number"  class="form-control input_sales" name="sales_price" value="0" onkeyup="display_profit()">
+                            <input type="number"  class="form-control" id="ap_sales" name="sales_price" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Profit: </label>
                         <div class="col-sm-8">
-                            <input type="number" readonly  class="form-control input_profit" name="profit" value="0" >
+                            <input type="number" readonly  class="form-control" id="ap_profit" name="profit" >
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-sm-4 col-form-label text-right">Quantity: </label>
                         <div class="col-sm-8">
-                            <input type="number" id="input_quantity" class="form-control" name="quantity" value="0">
+                            <input type="number" id="input_quantity" class="form-control" name="quantity" >
                         </div>
                     </div>
 

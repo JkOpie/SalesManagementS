@@ -214,6 +214,11 @@
   color: #3421C0;
 }
 
+.bg-purple{
+  background: #3421C0 !important;
+  border-color:rgb(52, 33, 192) !important;
+}
+
 .badge-notify{
   background:rgb(217, 97, 76);
   position:relative;

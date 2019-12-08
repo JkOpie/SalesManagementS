@@ -16,6 +16,7 @@ class Invoice extends Model
         'TQuantity',
         'TPrice',
         'Payment',
+        'Balance',
         'Time',
     ];
 
