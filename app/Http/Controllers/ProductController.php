@@ -62,10 +62,14 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update(Request $request){
+    public function edit($id){
+        $edit = Product::where('id','=', $id)->first();
+        return view('editproduct')->with('edit', $edit);
+    }
+
+    public function update($id, Request $request){
   
         $Validated = request()->validate([
-            'id' => 'required',
             'product_name' => 'required',
             'price' => 'required',
             'sales_price' => 'required',
@@ -74,14 +78,17 @@ class ProductController extends Controller
             
         ]);
 
-        Product::where('id','=', $request->id)->update([
+        $update = Product::where('id','=', $id)->update([
             'product_name' => $request->product_name,
             'price' => $request->price,
             'sales_price' => $request->sales_price,
             'profit' => $request->profit,
             'quantity' => $request->quantity,
         ]);
-        return redirect('/product');
+
+        if($update){
+            $this->sendResponse(null, 'Success');
+        }else $this->sendError('error occurrs');
     }
 
     public function delete($id){
@@ -112,5 +119,26 @@ class ProductController extends Controller
         return response()->json([
             'success' => 'Stock added successfully!'
         ]);
+    }
+
+    public function sendError($error, $errorMessages = [], $code = 404)
+    {
+        $response = [
+            'success' => false,
+            'message' => $error,
+        ];
+        if (!empty($errorMessages)) {
+            $response['data'] = $errorMessages;
+        }
+        return response()->json($response, $code);
+    }
+    public function sendResponse($result , $message)
+    {
+        $response = [
+            'success' => true,
+            'data' => $result,
+            'message' => $message,
+        ];
+        return response()->json($response, 200);
     }
 }

@@ -103,6 +103,12 @@ class InvoiceController extends Controller
         }else $this->sendError('error occurrs');
     }
 
+    public function display_pdf(){
+        $all = Invoice::all();
+        $revenue = Invoice::with('sales')->get();
+        return view('invoicepdf')->with('all', $all);
+    }
+
     public function sendError($error, $errorMessages = [], $code = 404)
     {
         $response = [

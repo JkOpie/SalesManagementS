@@ -68,4 +68,14 @@ class StockController extends Controller
             'success' => 'Stock deleted successfully!'
         ]);
     }
+
+    public function report(){
+        $all = Stock::all();
+        $tq = 0;
+
+        foreach($all  as $alls){
+            $tq = $tq + $alls->quantity;
+        }
+        return view('stockreport')->with('all', $all)->with('tq', $tq);
+    }
 }

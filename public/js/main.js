@@ -19,6 +19,7 @@ $(document).ready(function () {
 
     product_delete();
     product_add();
+    product_edit()
 
     add_stock();
     stock_delete();
@@ -115,6 +116,40 @@ function edit_invoice(){
     });      
 }
 
+function product_edit(){
+    var myForm  = $("form#edit_product");
+
+    myForm.submit(function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'post',
+            url: myForm.attr('action'),
+            data: myForm.serialize(),
+            success: function (data) {
+                swal.fire({
+                    title: "Success!",
+                    text: "Invoice Edited!",
+                    icon: "success",
+                    confirmButtonColor: '#3085d6',
+                }).then((result) => {
+                    if (result.value) {
+                        window.location.href = "/product";
+                    } else {
+                        window.location.href = "/product";
+                    }
+                })
+            },
+            error: function (data) {
+                swal.fire({
+                    icon: "error",
+                    title: "Oops!",
+                    text: "Invalid Payment",
+                })
+            }
+        });
+    });      
+}
+
 
 function menu_li() {
 
@@ -164,7 +199,7 @@ function add_invoice(){
             success: function (data) {
                 swal.fire({
                     title: "Success!",
-                    text: "Invoice Created!",
+                    text: "Sales Created!",
                     icon: "success",
                     confirmButtonColor: '#3085d6',
                 }).then((result) => {
@@ -281,7 +316,7 @@ function add_stock(){
   var token = $("meta[name='csrf-token']").attr("content");
   $(".add_stock").click(function () {
         var id = this.value;
-        //console.log(id); 
+        console.log(id); 
         (async () => {
           const { value:  quantity} = await Swal.fire({
             title: 'Enter stock',

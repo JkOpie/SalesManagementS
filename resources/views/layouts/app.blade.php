@@ -138,7 +138,7 @@
                             <li>
                                 <a href="/invoice" class=" icon acon">
                                     <span class="icon"><i class="fas fa-address-book"></i></span>
-                                    <span class="list">Invoice</span> 
+                                    <span class="list">Sales</span> 
                                     
                                 </a>
                             </li>

@@ -42,19 +42,20 @@ class CartController extends Controller
             'price' => 'required',
             'quantity' => 'required',
             'max_quantity' => 'required',
-            'total_price' => 'required',
         ]);
 
         $p = Product::where('id', '=', $request->product_id)->first();
         $p->quantity -= $request->quantity;
         $p->save();
 
+        $total_price = $request->quantity * $request->price;
+
 
         $create = Cart::create([
             'product_id' => $request->product_id,
             'price' =>  $request->price,
             'quantity' =>  $request->quantity,
-            'total_price' => $request->total_price,
+            'total_price' => $total_price,
         ]);
 
         return redirect('/product');
@@ -72,6 +73,8 @@ class CartController extends Controller
             return redirect('/cart');
         }
     }
+
+   
 
 
 }

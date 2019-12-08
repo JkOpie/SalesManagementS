@@ -7,12 +7,19 @@
             <div class="data_wrapper">
 
                 <div class="row">
-                    <div class="col-md-12 text-right">
+                    <div class="col-4 text-left">
+                            <input type="text" placeholder="Search by Product Name" class="form-control text-center" id="myInput"
+                                onkeyup="myFunction()">
+                        </div>
+                        <div class="col-4 ">
+                               
+                            </div>
+                    <div class="col-md-4 text-right">
                         <button class="btn btn-primary bg-purple"
-                            style="margin-bottom:2em;">Print</button>
+                            style="margin-bottom:2em;" onclick="popupwindow('/invoice/pdf', 'popupwindow', '1000', '800')">Report</button>
                     </div>
                 </div>
-                <table id="" class="table table-hover text-center bg-white" style="width:100%">
+                <table id="myTable" class="table table-hover text-center bg-white" style="width:100%">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -41,10 +48,13 @@
                             <td>{{$in->Time}}</td>
                             <td>
                                 <a class="btn btn-primary text-white" href="/invoice/edit/{{$in->id}}"><i class="fas fa-edit"></i></a>
-                                <a class="btn btn-secondary text-white" href="/sales/{{$in->id}}">  
-                                    View Product</a>
                                 <button type="submit" class="btn btn-danger invoicedelete" value="{{$in->id}}"><i
-                                        class="fas fa-trash-alt"></i></button>
+                                    class="fas fa-trash-alt"></i></button>
+                                <a class="btn btn-secondary text-white" href="/sales/{{$in->id}}">  
+                                    <i class="fas fa-eye"></i> Product</a>
+
+                                    <button type="button" class="btn btn-dark text-white" >Receipt</button>
+                               
                             </td>
                         </tr>
                         @endforeach
@@ -57,5 +67,6 @@
             </div>
         </div>
     </div>
+</div>
 
     @endsection

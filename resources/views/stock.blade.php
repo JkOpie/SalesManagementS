@@ -7,6 +7,8 @@
         If you want to add stock, please click <a href="/product" class="href">here</a>
     </div>
     <div class="data_wrapper">
+
+    @if (count($all) > 1)
         <div class="text-right" style="padding-bottom: 3%">
             <div class="row">
                 <div class="col-4 text-left">
@@ -17,7 +19,7 @@
     
                 </div>
                 <div class="col-4">
-                    <a class="btn" style="background:#3421C0;color:#fff" href="/cart"><i class="fas fa-plus" style="padding-right:10px"></i> Sales</a>
+                    <button class="btn bg-purple" onclick="popupwindow('/stock/report', 'popupwindow', '1000', '800')"> Report</button>
                 </div>
             </div>
         </div>
@@ -56,7 +58,10 @@
     
             </tbody>
         </table>
-       
+
+        @else
+       <h1>Empty Inventory!</h1>
+       @endif
     </div>
 </div>
 

@@ -217,6 +217,7 @@
 .bg-purple{
   background: #3421C0 !important;
   border-color:rgb(52, 33, 192) !important;
+  color: #fff !important;
 }
 
 .badge-notify{
@@ -229,4 +230,17 @@
  .ul{
    padding-left:0;
  }
+
+ h1.title{
+  font: bold 100% sans-serif; 
+  letter-spacing: 0.5em; 
+  text-align: center;
+   text-transform: uppercase;
+   background: black;
+   color: white;
+   padding: 1em;
+   border-radius: 0.5em;
+ }
+
+
 

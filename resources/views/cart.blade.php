@@ -8,6 +8,8 @@
                         if you want add product pls click <a href="/product" class="href">here</a>
                 </div>
             <div class="data_wrapper">
+
+            @if (count($all) > 1)
                 
                 <div class="row">
                     <div class="col-md-12 text-right">
@@ -73,6 +75,11 @@
                                 </div>
                         </div>
                 </div>
+
+                @else
+                <h1> Empty Cart!</h1>
+                @endif
+
                 
             </div>
         </div>

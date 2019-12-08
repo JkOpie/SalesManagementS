@@ -4,12 +4,7 @@ $(document).ready(function () {
         var tp = $('.cal_tp_invoice').val();
         var payment = this.value;
 
-        var total =  parseInt(payment) - parseInt(tp);
-        console.log(payment);
-        console.log(total);
-        
-        
-        
+        var total =  parseInt(payment) - parseInt(tp);    
         $('.cal_balance_invoice').val(total);
         
     });
@@ -18,12 +13,7 @@ $(document).ready(function () {
         var sales = $('#ap_sales').val();
         var price = this.value;
         var profit = parseInt(sales) - parseInt(price);
-
-        console.log(sales);
-        console.log(price);
-        console.log(profit);
-        
-
+    
         $('#ap_profit').val(profit);
         
     });
@@ -34,14 +24,8 @@ $(document).ready(function () {
         var sales = $('.input_price').val();
         var price = this.value;
         var profit = parseInt(price) - parseInt(sales);
-
-        console.log(sales);
-        console.log(price);
-        console.log(profit);
         
-
         $('.input_profit').val(profit);
-        
     });
 
     
@@ -51,9 +35,7 @@ $(document).ready(function () {
         var sales = this.value;
 
         var profit = parseInt(sales)-parseInt(price);
-        console.log(profit);
         
-
         $('#ap_profit').val(profit);
         
     });
@@ -62,22 +44,7 @@ $(document).ready(function () {
 
     $('.for_error').hide();
 
-    $('.input_quantity').keyup(function() { 
-        var sales = $('.input_sales').val();
-        var max_quantity = $('.input_max_quantity').val();
-        var quantity = this.value;
-
-        var total_price = parseInt(sales)*parseInt(quantity);
-
-         if (parseInt(max_quantity) <=  parseInt(quantity)){
-              $('.for_error').show()
-        }else{
-            $('.for_error').hide()
-        }
-
-        $('.input_total_price').val(total_price);
-    });
-
+    
 
 
     $('#payment').keyup(function() {
@@ -97,9 +64,32 @@ function display_profit(){
     var price = $('.input_price').val();
     var profit = parseInt(sales) - parseInt(price);
 
-    
-    console.log(price);
-
-
     $('.input_profit').val(profit);    
 }
+
+function cal_balance_invoice(){
+    var tp = $('.edit_tp_invoice').val();
+    var payment = $('.edit_payment_invoice').val();
+    var total = parseInt(payment)-parseInt(tp);
+    
+    $('.edit_balance_invoice').val(total);
+}
+
+function cp_op(){
+    var price = $('.ep_price').val();
+    var sales = $('.ep_sales').val();
+    var total = parseInt(sales) - parseInt(price);
+
+    $('.ep_profit').val(total);
+}
+
+function popupwindow(url, title, w, h) {
+    var left = (screen.width/2)-(w/2);
+    var top = (screen.height/2)-(h/2);
+    return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+} 
+
+function closeandrefresh(){
+    opener.location.href = opener.location.href;
+    window.close(); 
+  }
