@@ -46,19 +46,21 @@ class InvoiceController extends Controller
                 'Payment' => $request->payment,
                 'Balance' => $request->balance,
                 'Time' => Carbon::now()->toDateString(),
-
             ]);
 
             $cart = Cart::all();
 
-            foreach($cart as $carts){   
+            foreach($cart as $carts){ 
+                
+              
                 $sales = Sales::create([
-                    'Product_id' => $carts->product_id,
+                    'product_name' => $carts->product_name,
                     'Quantity' => $carts->quantity,
                     'Price' => $carts->price,
-                    'Invoice_id' => $invoice->id,
+                    'invoice_id' => $invoice->id,
                 ]);   
-            }   
+            }
+
             DB::table('carts')->delete();
                 
             return $this->sendResponse(null, 'Success');
@@ -103,10 +105,12 @@ class InvoiceController extends Controller
         }else $this->sendError('error occurrs');
     }
 
-    public function display_pdf(){
+    public function display_pdf()
+    {
         $all = Invoice::all();
         $revenue = Invoice::with('sales')->get();
-        return view('invoicepdf')->with('all', $all);
+
+        return view('report.invoicereport')->with('all', $all);
     }
 
     public function sendError($error, $errorMessages = [], $code = 404)

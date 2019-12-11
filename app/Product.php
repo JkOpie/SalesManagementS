@@ -4,7 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
-use DataTables;
+
+use App\Sales;
+use App\Cart;
 
 class Product extends Model
 {
@@ -13,4 +15,10 @@ class Product extends Model
     protected $fillable = [
         'id','product_name', 'price', 'sales_price','quantity','profit',
     ];
+
+    public function sales(){
+        
+        return $this->hasMany(Sales::class);
+    }
+
 }

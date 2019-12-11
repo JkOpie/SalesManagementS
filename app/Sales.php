@@ -4,18 +4,20 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Invoice;
-
+use App\Product;
 class Sales extends Model
 {
     protected $fillable = [
         'id',
-        'Product_id',
+        'product_name',
         'Price',
         'Quantity',
-        'Invoice_id',
+        'invoice_id',
     ];
 
     public function invoice(){
-        return $this->belongsTo(Invoice::class);
+
+        return $this->belongsTo(Invoice::class, 'invoice_id', 'id');
+        
     }
 }

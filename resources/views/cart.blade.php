@@ -9,7 +9,7 @@
                 </div>
             <div class="data_wrapper">
 
-            @if (count($all) > 1)
+            @if (count($all) > 0)
                 
                 <div class="row">
                     <div class="col-md-12 text-right">
@@ -32,7 +32,7 @@
                             @foreach ($all as $alls)
                             <tr>
                                 <td>{{++$i}}</td>
-                                <td>{{$alls->product_id}}</td>
+                                <td>{{$alls->product_name}}</td>
                                 <td>RM {{$alls->price}}</td>
                                 <td>{{$alls->quantity}}</td>
                                 <td>RM {{$alls->total_price}}</td>

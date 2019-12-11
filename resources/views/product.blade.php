@@ -18,14 +18,14 @@
         <div class="top_static">
             <h1 class="text-center text-white">Total Inventory <br> Revenue</h1>
             <hr class="hr_white">
-            <h1 class="text-center text-white"></h1>
+            <h1 class="text-center text-white">RM {{$total}}</h1>
         </div>
     </div>
     <div class="col-2 position-static">
         <div class="top_static">
-            <h1 class="text-center text-white">Highest Quantity</h1>
+            <h1 class="text-center text-white">Total Quantity</h1>
             <hr class="hr_white">
-            <h1 class="text-center text-white"></h1>
+        <h1 class="text-center text-white">{{$total_quantity}}</h1>
         </div>
     </div>
     <div class="col-3 position-static">
@@ -45,8 +45,11 @@
 
             </div>
             <div class="col-4">
-                <button class="btn" style="background:#3421C0;color:#fff" data-toggle="modal" data-target="#addmodal"><i
-                        class="fas fa-plus" style="padding-right:10px"></i> Product</button>
+                    <a class="btn bg-purple" style="background:#3421C0;color:#fff" 
+                    onclick="popupwindow('/product/report', 'popupwindow', '1000', '800')"><i class="fas fa-file-invoice-dollar" style="padding-right:1em"></i>Report</a >
+                    <button class="btn" style="background:#3421C0;color:#fff" data-toggle="modal" data-target="#addmodal"><i
+                    class="fas fa-plus" style="padding-right:10px"></i> Product</button>
+                       
             </div>
         </div>
     </div>

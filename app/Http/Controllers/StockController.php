@@ -76,6 +76,6 @@ class StockController extends Controller
         foreach($all  as $alls){
             $tq = $tq + $alls->quantity;
         }
-        return view('stockreport')->with('all', $all)->with('tq', $tq);
+        return view('report.stockreport')->with('all', $all)->with('tq', $tq);
     }
 }

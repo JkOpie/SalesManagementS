@@ -19,18 +19,21 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::all();
-        $i = 0;
+        $i = 0; $total_revenue =0; $total_quantity = 0;
         $all = Product::all()->count();
-        $hp = Product::orderBy('price', 'desc')->first();
-        $q = Product::orderBy('quantity', 'desc')->first();
-        
+
+        foreach( $product as  $p){
+            $total_revenue = $total_revenue + $p->price;
+            $total_quantity = $total_quantity + $p->quantity;
+        }
+
         return view('product')
         ->with('product', $product)
         ->with('i', $i)
         ->with('all', $all)
-        ->with('hp', $hp)
-        ->with('q', $q);
-        
+        ->with('total', $total_revenue)
+        ->with('total_quantity' , $total_quantity);
+
     }
 
     public function store(Request $request){
@@ -119,6 +122,16 @@ class ProductController extends Controller
         return response()->json([
             'success' => 'Stock added successfully!'
         ]);
+    }
+
+    public function report(){
+        $all = Product::all();
+        $tq = 0;
+
+        foreach($all  as $alls){
+            $tq = $tq + $alls->quantity;
+        }
+        return view('report.productreport')->with('all', $all)->with('tq', $tq);
     }
 
     public function sendError($error, $errorMessages = [], $code = 404)

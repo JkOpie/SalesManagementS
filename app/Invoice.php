@@ -21,6 +21,7 @@ class Invoice extends Model
     ];
 
     public function sales(){
+        
         return $this->hasMany(Sales::class);
     }
 }

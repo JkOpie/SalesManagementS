@@ -25,7 +25,7 @@
                                 @foreach ($sales as $sa)
                                 <tr>
                                     <td>{{++$i}}</td>
-                                    <td>{{$sa->Product_id}}</td>
+                                    <td>{{$sa->product_name}}</td>
                                     <td>RM {{$sa->Price}}</td>
                                     <td>{{$sa->Quantity}}</td>
                                 </tr>

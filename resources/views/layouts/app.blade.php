@@ -29,7 +29,6 @@
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
-
     <!-- Boostrap 4 Styles -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
@@ -122,14 +121,14 @@
                             </li>
                             <li>
                                 <a href="/stock" class=" icon acon">
-                                    <span class="icon"><i class="fas fa-address-book"></i></span>
+                                    <span class="icon"><i class="fas fa-boxes"></i></i></span>
                                     <span class="list">Inventory</span> 
                                    
                                 </a>
                             </li>
                             <li>
                                 <a href="/cart" class=" icon acon">
-                                    <span class="icon"><i class="fas fa-address-book"></i></span>
+                                    <span class="icon"><i class="fas fa-boxes"></i></span>
                                     <span class="list">Cart</span> 
                                     
                                 </a>
@@ -137,7 +136,7 @@
 
                             <li>
                                 <a href="/invoice" class=" icon acon">
-                                    <span class="icon"><i class="fas fa-address-book"></i></span>
+                                    <span class="icon"><i class="fas fa-share-alt"></i></span>
                                     <span class="list">Sales</span> 
                                     
                                 </a>
@@ -157,6 +156,5 @@
     </div>
    
 </body>
-
 
 </html>

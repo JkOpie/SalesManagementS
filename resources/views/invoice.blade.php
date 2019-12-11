@@ -16,7 +16,7 @@
                             </div>
                     <div class="col-md-4 text-right">
                         <button class="btn btn-primary bg-purple"
-                            style="margin-bottom:2em;" onclick="popupwindow('/invoice/pdf', 'popupwindow', '1000', '800')">Report</button>
+                            style="margin-bottom:2em;" onclick="popupwindow('/invoice/report', 'popupwindow', '1000', '800')">Report</button>
                     </div>
                 </div>
                 <table id="myTable" class="table table-hover text-center bg-white" style="width:100%">
@@ -53,7 +53,7 @@
                                 <a class="btn btn-secondary text-white" href="/sales/{{$in->id}}">  
                                     <i class="fas fa-eye"></i> Product</a>
 
-                                    <button type="button" class="btn btn-dark text-white" >Receipt</button>
+                                    <button type="button" class="btn btn-dark text-white" onclick="popupwindow('/receipt/{{$in->id}}', 'popupwindow', '700', '800')">Receipt</button>
                                
                             </td>
                         </tr>

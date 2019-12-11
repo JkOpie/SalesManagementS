@@ -30,7 +30,7 @@ Route::put('/product/{id}', 'ProductController@update')->name('update_product');
 Route::delete('/product/{id}','ProductController@delete')->name('delete_product');
 Route::post('/product/add_stock', 'ProductController@add_stock')->name('add_stock_product');
 Route::get('/product/edit/{id}','ProductController@edit')->name('edit_product');
-
+Route::get('/product/report', 'ProductController@report')->name('report_product');
 
 Route::get('/stock', 'StockController@index');
 Route::post('/stock', 'StockController@store')->name('add_stock');
@@ -41,18 +41,19 @@ Route::get('/stock/report', 'StockController@report')->name('report_cart');
 
 Route::get('/cart', 'CartController@index');
 Route::post('/cart', 'CartController@store')->name('add_cart');
-
+Route::delete('/cart/{id}', 'CartController@delete')->name('delete_cart');
 
 Route::get('/invoice', 'InvoiceController@index');
 Route::post('/invoice', 'InvoiceController@store')->name('add_invoice');
 Route::get('/invoice/edit/{id}','InvoiceController@edit')->name('edit_invoice');
 Route::put('/invoice/{id}', 'InvoiceController@update')->name('update_invoice');
 Route::delete('/invoice/{id}', 'InvoiceController@delete')->name('delete_invoice');
-Route::get('/invoice/pdf', 'InvoiceController@display_pdf')->name('display_pdf');
+Route::get('/invoice/report', 'InvoiceController@display_pdf')->name('report_invoice');
 
 Route::get('/sales', 'SalesController@index');
 Route::get('/sales/{id}', 'SalesController@show');
 
+Route::get('/receipt/{id}', 'SalesController@receipt');
 
 Route::get('/about', function () {
     return view('about');

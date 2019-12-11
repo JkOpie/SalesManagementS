@@ -39,6 +39,7 @@ class CartController extends Controller
         
         $Validated = request()->validate([
             'product_id' => 'required',
+            'product_name' => 'required',
             'price' => 'required',
             'quantity' => 'required',
             'max_quantity' => 'required',
@@ -53,6 +54,7 @@ class CartController extends Controller
 
         $create = Cart::create([
             'product_id' => $request->product_id,
+            'product_name' => $request->product_name,
             'price' =>  $request->price,
             'quantity' =>  $request->quantity,
             'total_price' => $total_price,
@@ -63,11 +65,12 @@ class CartController extends Controller
     }
 
     public function delete($id,Request $request){
+
         $pro = Product::where('id', '=', $request->product_id)->first();
         $pro->quantity += $request->quantity;
         $pro->save();
         
-        $delete = Cart::find($id)->delete();
+        $delete = Cart::where('id', $id)->delete();
 
         if($delete){
             return redirect('/cart');
