@@ -72,30 +72,20 @@
                                         <a class="btn btn-link d-inline" style="font-size:25px;" href="/cart">
                                             <i class="fas fa-shopping-cart" style="color:#3421C0"></i>
                                         </a>
-                                    <span class="badge badge-notify" style="font-size:10px;">{{$cart}}</span>
-                                        </div>
+                                        <span class="badge badge-notify" style="font-size:10px;">{{$cart}}</span>
+                                       
                                         
                                     </li>
 
-                                    <li class="nav-item dropdown">
-                                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#" role="button">
                                             {{ Auth::user()->name }} <span class="caret"></span>
                                         </a>
         
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                             document.getElementById('logout-form').submit();">
-                                                {{ __('Logout') }}
-                                            </a>
-        
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                style="display: none;">
-                                                @csrf
-                                            </form>
-                                        </div>
                                     </li>
                                     @endguest
+
+                                     </div>
                         </div>
                     </div>
                 </div>
@@ -128,7 +118,7 @@
                             </li>
                             <li>
                                 <a href="/cart" class=" icon acon">
-                                    <span class="icon"><i class="fas fa-boxes"></i></span>
+                                    <span class="icon"><i class="fas fa-cart-arrow-down"></i></span>
                                     <span class="list">Cart</span> 
                                     
                                 </a>
@@ -140,6 +130,16 @@
                                     <span class="list">Sales</span> 
                                     
                                 </a>
+                            </li>
+                            <li>
+                                <a class="list" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                                </form>
                             </li>
                         </ul>
                     </div>

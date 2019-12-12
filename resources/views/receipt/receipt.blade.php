@@ -31,7 +31,7 @@
         </table>
 
 
-        <table class="table table-hover table-borderless text-center bg-white text-center" style="width:100%">
+        <table class="table table-hover table-bordered text-center bg-white text-center" style="width:100%">
                 <tr>
                     <th  scope="col" class=" bg-secondary text-white"> Item</th>
                     <th scope="col" class=" bg-secondary text-white"> Price </th>
@@ -48,26 +48,21 @@
                 </tr>
                 @endforeach
                 <tr >
-                    <td></td>
-                    <td></td>
-                    
-                    <th scope="col">Total</th>
+                  
+                    <th scope="col" colspan="3" class="text-right">Total</th>
                     <td scope="col" class="bg-secondary text-white">RM {{$r->TPrice}}</td>
                     
                 </tr>   
                 <tr>
-                    <td></td>
-                    <td></td>
                     
-                    <th scope="col" >Payment</th>
+                    
+                    <th scope="col"  colspan="3" class="text-right">Payment</th>
                     <td scope="col" class="bg-secondary text-white">RM {{$r->Payment}}</td>
                     
                 </tr>  
                 <tr >
-                    <td></td>
-                    <td></td>
-                    
-                    <th scope="col" >Balance</th>
+                   
+                    <th scope="col"  colspan="3" class="text-right" style="border:none">Balance</th>
                     <td scope="col" class="bg-secondary text-white">RM {{$r->Balance}}</td>
                     
                 </tr>  
