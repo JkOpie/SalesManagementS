@@ -33,6 +33,12 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" ></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+     <!-- Chart js -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js" type="text/javascript"></script>
+    
+   
     
    
 </head>
@@ -134,7 +140,9 @@
                             <li>
                                 <a class="list" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                                    <span class="list">{{ __('Logout') }}</span> 
+                                    
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                 style="display: none;">
@@ -144,11 +152,10 @@
                         </ul>
                     </div>
                 </div>
-
-
                 <div class="container_wrapper">
                     @yield('content')
                 </div>
+           
             </div>
         </div>
 
@@ -156,5 +163,7 @@
     </div>
    
 </body>
+
+@yield('bottom')
 
 </html>

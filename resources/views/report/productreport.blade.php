@@ -15,7 +15,12 @@
     <table id="" class="table table-hover table-bordered text-center bg-white" style="width:100%">
         <tr>
             <th>Total Quantity</th>
-        <td>{{$tq}}</td>
+            <td>RM {{$tq}}</td>
+        </tr>
+
+        <tr>
+            <th>Total Revenue</th>
+            <td>RM {{$total_revenue}}</td>
         </tr>
     </table>
 </div>

@@ -23,7 +23,7 @@ class ProductController extends Controller
         $all = Product::all()->count();
 
         foreach( $product as  $p){
-            $total_revenue = $total_revenue + $p->price;
+            $total_revenue = $total_revenue + ($p->price * $p->quantity);
             $total_quantity = $total_quantity + $p->quantity;
         }
 
@@ -126,12 +126,17 @@ class ProductController extends Controller
 
     public function report(){
         $all = Product::all();
-        $tq = 0;
+        $tq = 0;$total_revenue=0;
+
+    
 
         foreach($all  as $alls){
             $tq = $tq + $alls->quantity;
+            $total_revenue  += ($alls->price * $alls->quantity);
+            
         }
-        return view('report.productreport')->with('all', $all)->with('tq', $tq);
+
+        return view('report.productreport')->with('all', $all)->with('tq', $tq)->with('total_revenue', $total_revenue);
     }
 
     public function sendError($error, $errorMessages = [], $code = 404)

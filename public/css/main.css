@@ -242,5 +242,32 @@
    border-radius: 0.5em;
  }
 
+ @media screen and (max-width: 800px) {
+    span.list {
+      display: none !important;
+  }
+
+  .main_body .sidebar_menu{
+    width: 5em;
+  }
+
+  .main_body .container_wrapper{
+    margin-left: 10em !important;
+    padding-top: 22%;
+  }
+
+  .wrapper .top_navbar .top_menu{
+    width: calc(100% - 73px);
+  }
+  .wrapper .top_navbar .logo{
+    width: 72px;
+    transition: all 0.3s linear;
+  }
+
+  .wrapper .top_navbar .logo a{
+    display:none;
+  }
+}
+
 
 
