@@ -33,6 +33,7 @@ class HomeController extends Controller
         $invoice = Invoice::all();
         $invoice_count = Invoice::all()->count();
         $total_revenue = 0; $total_quantity =0; $total_price =0;
+
         foreach( $invoice as  $p){
             $total_revenue += ($p->price * $p->quantity);
             $total_quantity += $p->quantity;
@@ -45,12 +46,19 @@ class HomeController extends Controller
     
         $total_product_sell = 0;$total_quantity_sell =0; $total_price_sell =0;
 
-        foreach($invoice as $i){
-            $total_product_sell += $i->TProduct;
-            $total_quantity_sell += $i->TQuantity;
-        }   $total_price_sell += $i->TPrice;
         
 
+        if($product_count >= 0){
+
+        }else{
+            foreach($product as $i){
+                $total_product_sell += $i->TProduct;
+                $total_quantity_sell += $i->TQuantity;
+            } 
+            $total_price_sell += $i->TPrice;
+        }
+
+        
         $chart = new SampleChart;
 
         $chart->labels(['Total', 'Quantity', 'Total Price', 'Four']);
@@ -73,23 +81,34 @@ class HomeController extends Controller
 
         $data = Stock::all();
 
-        foreach($data  as $d){
-            $c[] = $d->time;
-            $e[] = $d->quantity;
+        if($data->count() >= 0 ){
+
+
+        }else{
+            foreach($data  as $d){
+                $c[] = $d->time;
+                $e[] = $d->quantity;
+            }
+    
+            //return $e;
+        
+            $inven->labels($c);
+    
+            $inven->dataset('Inventory', 'line', ($e))
+            ->color( "#5DADE2")
+            ->backgroundcolor("#5DADE2")
+            ->linetension(0.2)
+            ->fill(false);
+
+            return view('home' ,compact('chart', 'inven'));
         }
 
-        //return $e;
-     
-        $inven->labels($c);
+        return view('home' ,compact('chart'));
 
+        
 
-        $inven->dataset('Inventory', 'line', ($e))
-        ->color( "#5DADE2")
-        ->backgroundcolor("#5DADE2")
-        ->linetension(0.2)
-        ->fill(false);
        
 
-        return view('home' ,compact('chart', 'inven'));
+        
     }
 }

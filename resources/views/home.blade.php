@@ -34,7 +34,12 @@
                 </div>
 
                     <div id="app">
+
+                        @if(session()->has('invent'))
+
                         {!! $inven->container() !!}
+                        
+                        @endif
                     </div>
                 
             </div>
@@ -50,5 +55,8 @@
 
 @section('bottom')
 {!! $chart->script() !!}
+
+@if(session()->has('invent'))
 {!! $inven->script() !!}
+@endif
 @endsection
