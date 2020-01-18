@@ -20,8 +20,12 @@ class Invoice extends Model
         'Time',
     ];
 
-    public function sales(){
-        
+    public function sales(){   
         return $this->hasMany(Sales::class);
     }
+
+    public function products(){   
+        return $this->hasMany(Product::class, 'product_id', 'id');
+    }
+    
 }

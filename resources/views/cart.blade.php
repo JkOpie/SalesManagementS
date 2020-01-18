@@ -32,7 +32,7 @@
                             @foreach ($all as $alls)
                             <tr>
                                 <td>{{++$i}}</td>
-                                <td>{{$alls->product_name}}</td>
+                                <td>{{$alls->products['product_name']}}</td>
                                 <td>RM {{$alls->price}}</td>
                                 <td>{{$alls->quantity}}</td>
                                 <td>RM {{$alls->total_price}}</td>
@@ -145,9 +145,9 @@
                             <input type="number"  id="payment" class="form-control" name="payment">
                         </div>
                         <label class="col-sm-4 col-form-label"></label>
-                        <small id="passwordHelpBlock" class="col-sm-8 form-text text-muted">
+                        <small id="passwordHelpBlock" class="col-sm-8 form-text  text-danger" >
                             Your payment must be higher than total price.
-                          </small>
+                        </small>
                     </div>
 
                     <div class="form-group row">

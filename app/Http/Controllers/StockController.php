@@ -16,11 +16,13 @@ class StockController extends Controller
 
     public function index(){
 
-        $all = Stock::orderBy('created_at', 'desc')->paginate(15);
-        $pro_name = Product::all();
+        $all = Stock::orderBy('created_at', 'desc')->with('products')->paginate(15);
 
-        return view('stock')->with('all', $all)
-        ->with('pro_name', $pro_name);
+        // /return $all;
+        //$pro_name = Product::all();
+
+        return view('stock')->with('all', $all);
+      
     }
 
     public function store(Request $request){

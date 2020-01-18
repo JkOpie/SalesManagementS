@@ -17,6 +17,8 @@ class CreateInvoicesTable extends Migration
             $table->bigIncrements('id');
             $table->string('CustName')->nullable();
             $table->text('CustAdd')->nullable();
+            $table->bigInteger('product_id')->unsigned()->index()->nullable();
+            $table->foreign('product_id')->references('id')->on('products');
             $table->integer('TProduct')->nullable();
             $table->integer('TQuantity')->nullable();
             $table->integer('TPrice')->nullable();

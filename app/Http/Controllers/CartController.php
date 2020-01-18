@@ -15,7 +15,10 @@ class CartController extends Controller
     }
 
     public function index(){
-        $all = Cart::all();
+
+        $all = Cart::with('products')->get();
+        //return $all;
+
         $total_product = Cart::all()->count();
         $total_price = 0;
         $total_quantity = 0;
@@ -39,7 +42,7 @@ class CartController extends Controller
         
         $Validated = request()->validate([
             'product_id' => 'required',
-            'product_name' => 'required',
+            //'product_name' => 'required',
             'price' => 'required',
             'quantity' => 'required',
             'max_quantity' => 'required',
@@ -54,7 +57,7 @@ class CartController extends Controller
 
         $create = Cart::create([
             'product_id' => $request->product_id,
-            'product_name' => $request->product_name,
+            //'product_name' => $request->product_name,
             'price' =>  $request->price,
             'quantity' =>  $request->quantity,
             'total_price' => $total_price,

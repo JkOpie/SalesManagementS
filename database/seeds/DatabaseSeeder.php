@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\User;
+use App\Product;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +19,9 @@ class DatabaseSeeder extends Seeder
            'email' => 'syaafi@syaafi.com',
            'password' => bcrypt('12345678'),
        ]);
+
+       factory(Product::class, 10)->create();
+
+
     }
 }

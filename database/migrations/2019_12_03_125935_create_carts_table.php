@@ -15,8 +15,9 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('product_id')->nullable();
-            $table->string('product_name')->nullable();
+            $table->bigInteger('product_id')->unsigned()->index()->nullable();
+            $table->foreign('product_id')->references('id')->on('products');
+            //$table->string('product_name')->nullable();
             $table->integer('quantity')->nullable();
             $table->integer('price')->nullable();
             $table->integer('total_price')->nullable();

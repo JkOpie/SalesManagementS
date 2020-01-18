@@ -38,7 +38,10 @@
                 @foreach ($all as $alls)
                 <tr>
                     
-                    <td>{{$alls->product_id}}</td>
+                    <td>
+                        {{$alls->products['product_name']}}
+                      
+                    </td>
                     <td>{{$alls->quantity}}</td>
                     <td>{{$alls->time}}</td>
                     <td>{{$alls->categories}}</td>
@@ -64,62 +67,6 @@
        @endif
     </div>
 </div>
-
-<div class="modal fade bd-example-modal-lg" id="sales" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" >Sales</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                <form id="editform" method="post" action="{{route('add_stock')}}">
-                        @csrf
-                        @foreach ($pro_name as $pn)
-                        <div class="form-group row after-add-more control-group">
-                            <label class="col-sm-2 col-form-label text-right">Product Name:</label>
-                            <div class="col-sm-3">
-                                <input type="text"  class="form-control" value="{{$pn->id}}" name="product_id[]"></option>
-                            </div> 
-
-                            <label class="col-sm-2 col-form-label text-right"> Price: RM</label>
-                            <div class="col-sm-2">
-                                <input type="number" readonly class="form-control" value="{{$pn->sales_price}}" >
-                            </div>
-                           
-                            
-                            <label class="col-sm-1 col-form-label text-right">Quantity: </label>
-                            <div class="col-sm-2">
-                                <input type="number" class="form-control" required name="quantity[]" value="0">
-                            </div>
-                            
-                        </div>
-                        @endforeach
-                        <hr>
-                        <div class="row">
-                            <label class="col-sm-2 col-form-label text-right">Total Sales:</label>
-                            <div class="col-sm-2">
-                            <input type="number" readonly class="form-control" value="" >
-                            </div>
-                        </div>
-
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary " value="Save Change"> Submit</button>
-                        </div>
-                    </form>
-                </div>
-               
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
 
 
 @endsection

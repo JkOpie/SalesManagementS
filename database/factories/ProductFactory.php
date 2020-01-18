@@ -14,4 +14,6 @@ $factory->define(Product::class, function (Faker $faker) {
         'sales_price' => $faker->randomDigit,
         'quantity' => $faker->randomDigit,
     ];
+
+    
 });
