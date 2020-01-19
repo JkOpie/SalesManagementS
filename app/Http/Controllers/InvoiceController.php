@@ -35,7 +35,6 @@ class InvoiceController extends Controller
             'balance' => 'required',
         ]);
 
-
         if($request->payment > $request->total_price){
             $invoice = Invoice::create([
                 'CustName' => $request->custname,
@@ -48,13 +47,11 @@ class InvoiceController extends Controller
                 'Time' => Carbon::now()->toDateString(),
             ]);
 
-            $cart = Cart::all();
+        $cart = Cart::with('products')->get();
 
             foreach($cart as $carts){ 
-                
-              
                 $sales = Sales::create([
-                    'product_name' => $carts->product_name,
+                    'product_name' => $carts->products->product_name,
                     'Quantity' => $carts->quantity,
                     'Price' => $carts->price,
                     'invoice_id' => $invoice->id,
@@ -98,7 +95,12 @@ class InvoiceController extends Controller
     }
 
     public function delete($id){
-        $delete = Invoice::with('sales')->find($id)->delete();
+
+        //return $id;
+        $invoice = Invoice::find($id);
+
+        $invoice->sales->each->delete();
+        $delete =  $invoice->delete();
 
         if($delete){
             $this->sendResponse(null, 'Success');

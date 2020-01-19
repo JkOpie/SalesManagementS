@@ -20,7 +20,9 @@ class SalesController extends Controller
     }
 
     public function show($id){
-        $sales = Invoice::find($id)->sales;
+        $sales = Invoice::where('id','=',$id)->with('sales')->get();
+
+        // /return $sales;
 
         $i = 0;
         return view('sales')
@@ -34,6 +36,8 @@ class SalesController extends Controller
         $receipt = Invoice::where('id', $id )->first();
 
         $sales =  Invoice::find($id)->sales;
+
+       
 
         return view('receipt.receipt')
         ->with('r', $receipt)

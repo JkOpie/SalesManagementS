@@ -9,6 +9,7 @@ class Sales extends Model
 {
     protected $fillable = [
         'id',
+        'product_id',
         'product_name',
         'Price',
         'Quantity',
@@ -18,4 +19,6 @@ class Sales extends Model
     public function invoice(){
         return $this->belongsTo(Invoice::class, 'invoice_id', 'id');
     }
+
+   
 }

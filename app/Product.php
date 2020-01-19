@@ -16,11 +16,6 @@ class Product extends Model
         'id','product_name', 'price', 'sales_price','quantity','profit',
     ];
 
-    public function sales(){
-        
-        return $this->hasMany(Sales::class);
-    }
-
     public function carts(){
         
         return $this->hasMany(Cart::class);

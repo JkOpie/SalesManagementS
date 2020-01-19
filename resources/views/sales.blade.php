@@ -23,12 +23,19 @@
                             </thead>
                             <tbody>
                                 @foreach ($sales as $sa)
+                                    @foreach ($sa->sales as $sas)
                                 <tr>
                                     <td>{{++$i}}</td>
-                                    <td>{{$sa->product_name}}</td>
-                                    <td>RM {{$sa->Price}}</td>
-                                    <td>{{$sa->Quantity}}</td>
+                                    <td>{{$sas->product_name}}</td>
+                                    <td>RM{{$sas->Price}}</td>
+                                    <td>{{$sas->Quantity}}</td>
                                 </tr>
+                                 @endforeach
+                                
+                                
+                                
+                              
+                                   
                                 @endforeach
                             </tbody>
                         </table>
